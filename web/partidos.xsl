@@ -3,6 +3,17 @@
 <xsl:output method="html" doctype-system="legacy-compat" encoding="utf-8"/>
 <xsl:template match='/club_voleibol'>
 
+<!--
+Autor: JESUS ANGEL RUIZ GONZALEZ
+Asignatura: LMGSI
+Unidad: UD 4
+Fecha: 05-03-2024
+Tarea: Tarea evaluativa 2 (60%) - XSLT
+Autoevaluación: https://docs.google.com/document/d/1QluGJQj9RsO75LrS7uN1xmU2amOpX6qGsNiVjG-waBg/edit?usp=sharing
+
+Enlace a sitio web público: https://josurg.github.io/voleibol/index.html
+-->
+
 <html lang="es">
 
 	<head>
@@ -35,14 +46,23 @@
 				<xsl:sort select="fecha" order="descending" />
         		
 				<tr>
+					<!-- Mostramos los equipos local y visitante y la fecha del partido -->
 					<td><xsl:value-of select="equipos/local" /> - <xsl:value-of select="equipos/visitante" /></td>
 					<td><xsl:value-of select="fecha" /> </td>
+					
+					<!-- En el choose seleccionamos quién gana el partido -->
 					<xsl:choose>
+
+						<!-- Si gana el visitante mostramos el resultado en azul mediante la clase -->
 						<xsl:when test="equipos/visitante/@puntuacion &gt; equipos/local/@puntuacion">
-							<td class="azul"><xsl:value-of select="equipos/local/@puntuacion" /> - <xsl:value-of select="equipos/visitante/@puntuacion" /> </td>
+							<td class="azul"><xsl:value-of select="equipos/local/@puntuacion" /> - 
+							<xsl:value-of select="equipos/visitante/@puntuacion" /> </td>
 						</xsl:when>
+
+						<!-- Si gana el local mostramos el resultado normal -->
 						<xsl:otherwise>
-							<td><xsl:value-of select="equipos/local/@puntuacion" /> - <xsl:value-of select="equipos/visitante/@puntuacion" /> </td>
+							<td><xsl:value-of select="equipos/local/@puntuacion" /> - 
+							<xsl:value-of select="equipos/visitante/@puntuacion" /> </td>
 						</xsl:otherwise>
 					</xsl:choose>
 				</tr>
@@ -54,6 +74,6 @@
 		</footer>
 	</body>
 </html>
-
 </xsl:template>
+
 </xsl:stylesheet>

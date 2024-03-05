@@ -3,6 +3,17 @@
 <xsl:output method="html" doctype-system="legacy-compat" encoding="utf-8"/>
 <xsl:template match='/club_voleibol'>
 
+<!--
+Autor: JESUS ANGEL RUIZ GONZALEZ
+Asignatura: LMGSI
+Unidad: UD 4
+Fecha: 05-03-2024
+Tarea: Tarea evaluativa 2 (60%) - XSLT
+Autoevaluación: https://docs.google.com/document/d/1QluGJQj9RsO75LrS7uN1xmU2amOpX6qGsNiVjG-waBg/edit?usp=sharing
+
+Enlace a sitio web público: https://josurg.github.io/voleibol/index.html
+-->
+
 	<html lang="es">
 
 		<head>
@@ -20,17 +31,9 @@
 			</header>
 			
 			<main>
-				<!-- Seleccionamos los equipos a los que queremos aplicar la plantilla -->
+				
+				<!-- Seleccionamos los entrenadores y aplicamos la plantilla -->
 				<xsl:apply-templates select="equipo/entrenador"/>
-				<!-- 
-				<h1><a href="https://es.wikipedia.org/wiki/Julio_Velasco">JULIO VELASCO</a></h1>
-				-->
-				<!-- <article class="equipos">
-					<xsl:apply-templates select="jugadores/jugador"/>
-					<h4>Club VolleyTeam</h4>
-					<p>7 - Luis García</p>
-					<p>12 - Silvia Ramos</p>
-				</article> -->
 			</main>
 
 			<footer>
@@ -40,39 +43,38 @@
 	</html>
 </xsl:template>
 
-
-
+<!-- Seleccionamos el entrenador que queremos mostrar y aplicamos la plantilla -->
 <xsl:template match="entrenador">
-	<xsl:variable name="ent" select="nombre"/>
-	<!-- <h1><a href="{url}"><xsl:value-of select="nombre"/></a></h1> -->
 	
+	<!-- Declaramos la variable ent para el nombre del entrenador -->
+	<xsl:variable name="ent" select="nombre"/>
+	
+	<!-- En el if seleccionamos lo que queremos en base al valor de la variable -->
 	<xsl:if test="nombre='Julio Velasco'">
-		<!-- Usamos las {} para combinar codigo HTML y XSLT -->
+		
+		<!-- Usamos las {} para combinar codigo HTML y XSLT con la url de la web -->
 		<h1><a href="{url}"><xsl:value-of select="$ent"/></a></h1>
 		
 		<article class="equipos">
+			
+			<!-- Mostramos el nombre del equipo en base al valor de la variable	-->
 			<h4><xsl:value-of select="$ent/../../nombre"/></h4>
+			
+			<!-- Seleccionamos los jugadores -->
 			<xsl:apply-templates select="../jugadores/jugador"/>
 		</article>
     </xsl:if>   
 </xsl:template>
 
+<!-- Seleccionamos el entrenador que queremos mostrar y aplicamos la plantilla -->
 <xsl:template match="jugador">
-	<!-- <xsl:choose>
-		<xsl:when test="@titular='si'">
-			<p><xsl:value-of select="@camiseta"/> - <xsl:value-of select="nombre"/></p>
-		</xsl:when>
-	</xsl:choose> -->
-
+	
+	<!-- En el if seleccionamos los jugadores con atributo titular -->
 	<xsl:if test="@titular='si'">
+		
+		<!-- Mostramos el número de la camiseta y el nombre del jugador -->
 		<p><xsl:value-of select="@camiseta"/> - <xsl:value-of select="nombre"/></p>
     </xsl:if> 
 </xsl:template>
-
-<!-- <xsl:template match="entrenador">
-	<xsl:variable name="ent" select="equipo"/>
-	<h1><a href={entrenador/url} <xsl:value-of select="entrenador[nombre=$ent]"/>JULIO VELASCO</a></h1>
-</xsl:template>
--->
 
 </xsl:stylesheet>

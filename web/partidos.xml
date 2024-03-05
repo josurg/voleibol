@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="partidos.xsl"?>
 
+<!--
+Autor: JESUS ANGEL RUIZ GONZALEZ
+Asignatura: LMGSI
+Unidad: UD 4
+Fecha: 05-03-2024
+Tarea: Tarea evaluativa 2 (60%) - XSLT
+Autoevaluación: https://docs.google.com/document/d/1QluGJQj9RsO75LrS7uN1xmU2amOpX6qGsNiVjG-waBg/edit?usp=sharing
+
+Enlace a sitio web público: https://josurg.github.io/voleibol/index.html
+-->
+
 <club_voleibol>
 
     <!-- Información de la tienda -->
